@@ -21,9 +21,8 @@ endif()
 
 add_compile_options(-Wall)
 
-add_executable(proj main.cpp TextEdit.cpp Action.cpp Dialog.cpp Config.cpp)
-
+add_executable(proj src/main.cpp src/TextEdit.cpp src/Action.cpp src/Dialog.cpp src/Config.cpp)
 # Link Raylib 
 target_link_libraries(proj PRIVATE raylib)
 target_link_libraries(proj PRIVATE ${GTKMM_LIBRARIES})
-
+target_include_directories(proj PUBLIC ${CMAKE_SOURCE_DIR}/include)

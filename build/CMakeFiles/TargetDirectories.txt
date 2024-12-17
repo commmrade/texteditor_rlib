@@ -1,0 +1,3 @@
+/home/klewy/myFiles/vscode/cpp_projects/aaa/texteditor_rlib/build/CMakeFiles/proj.dir
+/home/klewy/myFiles/vscode/cpp_projects/aaa/texteditor_rlib/build/CMakeFiles/edit_cache.dir
+/home/klewy/myFiles/vscode/cpp_projects/aaa/texteditor_rlib/build/CMakeFiles/rebuild_cache.dir

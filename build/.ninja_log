@@ -1,0 +1,7 @@
+# ninja log v6
+2	1482	1734467772518155301	CMakeFiles/proj.dir/src/Config.cpp.o	31912de36022ca8a
+1	1697	1734467772518155301	CMakeFiles/proj.dir/src/TextEdit.cpp.o	b28cb8faeedf8f02
+2	4836	1734467772518155301	CMakeFiles/proj.dir/src/Action.cpp.o	8f782d41e873fc69
+1	5008	1734467772518155301	CMakeFiles/proj.dir/src/main.cpp.o	d8d7f63da31604b
+2	5018	1734467772518155301	CMakeFiles/proj.dir/src/Dialog.cpp.o	9fee51631c583137
+5018	5202	1734467777534822049	proj	4017923960bebf4e

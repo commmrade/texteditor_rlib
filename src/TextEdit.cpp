@@ -10,7 +10,8 @@ TextWindow::TextWindow(std::string font_path, int fontSize, int spacing, TextSta
  :  fontSize(fontSize), spacing(spacing), active_line(0), 
 cursorX(0), cursor_index(0), scroll_offset(0), scroll_step(3), state(state)
 {
-    font = LoadFont(font_path.c_str()); //Setting up a font
+    font = LoadFont("../Roboto-Regular.ttf");
+    //font = LoadFont(font_path.c_str()); //Setting up a font
     state.lines.push_back("");
 }
 TextWindow::TextWindow(std::string font_path, int fontSize, int spacing, size_t scroll_step, TextState &state) : TextWindow(font_path, fontSize, spacing, state) {

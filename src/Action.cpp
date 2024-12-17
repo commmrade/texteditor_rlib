@@ -21,7 +21,7 @@ ActionWindow::ActionWindow(TextState &state) : state(state)
 }
 ActionWindow::~ActionWindow()
 {
-    //delete main;
+
 }
 
 
@@ -41,7 +41,7 @@ void ActionWindow::Update()
             }
         }        
     }
-    //delete main;
+   
     
 }
 void ActionWindow::Draw()

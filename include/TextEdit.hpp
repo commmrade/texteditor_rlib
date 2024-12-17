@@ -2,7 +2,9 @@
 #include<iostream>
 #include "window.hpp"
 #include<deque>
+#include<vector>
 #include<raylib.h>
+#include <ranges>
 #include "TextState.hpp"
 
 class TextWindow : public Window {
@@ -49,7 +51,27 @@ public:
     void Draw(); //Drawginc code
 
     void handle_input();
+
     void handle_scrolling();
     void handle_shortcuts();
+    void handle_arrows_mov();
+    void handle_erasing();
+    void handle_inserting();
+
     void text_input_handle();
+
+    void draw_lines_cnt();
+    void draw_text();
+
+    Color syntax_color(const std::string &word) {
+        if (true) // Language is cpp (placeholder) 
+        {
+            if (word == "if ") {
+                return PURPLE;
+            } else if (word == "void ") {
+                return BLUE;
+            }
+        }
+        return WHITE;
+    }
 };

@@ -50,6 +50,9 @@ int main(/*int argc, char**argv*/) {
         } else if(IsKeyPressed(KEY_F2)) {
             page = ACTION;
         }
+
+
+        
         windows[page]->Update();
 
 

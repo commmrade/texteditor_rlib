@@ -14,8 +14,7 @@
 
 class ActionWindow : public Window {
 private:
-    // Rectangle saveBtn;
-    // Rectangle openBtn;
+ 
     std::unique_ptr<Box> box;
     TextState &state;
 public:

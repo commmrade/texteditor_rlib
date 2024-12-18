@@ -222,15 +222,25 @@ void TextWindow::draw_text() {
         | std::ranges::to<std::vector<std::string>>(); // Spliting words
 
 
-        for (auto word : words) {
-            
-            
+        auto words_and_colors = SyntaxHighlight::parse_line(words);
+
+        for (const auto &[word, color] : words_and_colors) {
             DrawTextEx(font, word.c_str(), 
             { size_already , (i - scroll_offset) * textSize.y}, //Figuring out actual position
-            fontSize, spacing, syntax_color(word));
+            fontSize, spacing, color);
 
             size_already += MeasureTextEx(font, word.c_str(), fontSize, spacing).x + spacing;
         }
+
+        // for (auto word : words) {
+            
+            
+        //     DrawTextEx(font, word.c_str(), 
+        //     { size_already , (i - scroll_offset) * textSize.y}, //Figuring out actual position
+        //     fontSize, spacing, syntax_color(word));
+
+        //     size_already += MeasureTextEx(font, word.c_str(), fontSize, spacing).x + spacing;
+        // }
     
     }
 }

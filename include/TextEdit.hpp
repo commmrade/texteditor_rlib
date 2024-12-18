@@ -6,6 +6,8 @@
 #include<raylib.h>
 #include <ranges>
 #include "TextState.hpp"
+#include "Syntax.hpp"
+
 
 class TextWindow : public Window {
 private:
@@ -62,16 +64,4 @@ public:
 
     void draw_lines_cnt();
     void draw_text();
-
-    Color syntax_color(const std::string &word) {
-        if (true) // Language is cpp (placeholder) 
-        {
-            if (word == "if ") {
-                return PURPLE;
-            } else if (word == "void ") {
-                return BLUE;
-            }
-        }
-        return WHITE;
-    }
 };

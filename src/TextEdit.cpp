@@ -213,18 +213,19 @@ void TextWindow::draw_text() {
     {
         float size_already{startXPos};
 
-        auto words = std::views::split(state.lines[i], ' ') 
+        auto words_r = std::views::split(state.lines[i], ' ') 
         | std::views::transform([](auto &&rng) {
             auto result = std::string(rng.begin(), rng.end());
+           
             result += " ";
             return result;
-        })
-        | std::ranges::to<std::vector<std::string>>(); // Spliting words
-
-
-        auto words_and_colors = SyntaxHighlight::parse_line(words);
+        });
+        std::vector<std::string> words{words_r.begin(), words_r.end()};
+        
+        auto words_and_colors = SyntaxHighlight::parse_line(words, state.lang_extension);
 
         for (const auto &[word, color] : words_and_colors) {
+            //std::cout << word << std::endl;
             DrawTextEx(font, word.c_str(), 
             { size_already , (i - scroll_offset) * textSize.y}, //Figuring out actual position
             fontSize, spacing, color);
@@ -232,15 +233,6 @@ void TextWindow::draw_text() {
             size_already += MeasureTextEx(font, word.c_str(), fontSize, spacing).x + spacing;
         }
 
-        // for (auto word : words) {
-            
-            
-        //     DrawTextEx(font, word.c_str(), 
-        //     { size_already , (i - scroll_offset) * textSize.y}, //Figuring out actual position
-        //     fontSize, spacing, syntax_color(word));
-
-        //     size_already += MeasureTextEx(font, word.c_str(), fontSize, spacing).x + spacing;
-        // }
     
     }
 }

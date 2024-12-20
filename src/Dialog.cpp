@@ -48,8 +48,11 @@ void Main::on_file_dialog_finish(const Glib::RefPtr<Gio::AsyncResult>& result, c
         if(currentAction == SAVE)
         {
             std::ofstream file;
-            file.open(dialog->save_finish(result)->get_path(), std::ios_base::out);
+            auto file_name = dialog->save_finish(result)->get_path();
+            state.lang_extension = file_name.substr(file_name.find_last_of(".") + 1);
 
+            file.open(file_name, std::ios_base::out);
+            
             if(file.is_open())
             {
                 for(auto &line : state.lines)
@@ -62,7 +65,9 @@ void Main::on_file_dialog_finish(const Glib::RefPtr<Gio::AsyncResult>& result, c
         }
         else if (currentAction == OPEN) {
             std::ifstream file;
-            file.open(dialog->open_finish(result)->get_path());
+            auto file_name = dialog->open_finish(result)->get_path();
+            state.lang_extension = file_name.substr(file_name.find_last_of(".") + 1);
+            file.open(file_name);
 
 
             std::string line;

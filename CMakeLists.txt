@@ -21,7 +21,7 @@ endif()
 
 add_compile_options(-Wall)
 
-add_executable(proj src/main.cpp src/TextEdit.cpp src/Action.cpp src/Dialog.cpp src/Config.cpp)
+add_executable(proj src/main.cpp src/TextEdit.cpp src/Action.cpp src/Dialog.cpp src/Config.cpp src/WindowState.cpp)
 # Link Raylib 
 target_link_libraries(proj PRIVATE raylib)
 target_link_libraries(proj PRIVATE ${GTKMM_LIBRARIES})

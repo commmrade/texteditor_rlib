@@ -44,7 +44,8 @@ public:
 
     TextWindow(const TextWindow& other) = delete;
     TextWindow(TextWindow &&moved) = delete;
-
+    TextWindow& operator=(const TextWindow&) = delete;
+    TextWindow& operator=(TextWindow&&) = delete;
 
 
     ~TextWindow();

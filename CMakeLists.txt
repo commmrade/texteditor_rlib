@@ -18,7 +18,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 add_compile_options(-Wall -Wextra -Wpedantic)
 
 
-add_executable(proj src/main.cpp src/TextEdit.cpp src/Action.cpp src/Dialog.cpp src/Config.cpp src/WindowState.cpp)
+add_executable(proj src/main.cpp src/TextEdit.cpp src/Action.cpp src/Dialog.cpp src/Config.cpp src/WindowState.cpp src/Utils.cpp src/Syntax.cpp src/Interface.cpp)
 # Link Raylib 
 target_link_libraries(proj PRIVATE raylib)
 target_link_libraries(proj PRIVATE ${GTKMM_LIBRARIES})

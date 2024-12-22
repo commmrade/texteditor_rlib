@@ -20,6 +20,9 @@ public:
 
     ActionWindow(const ActionWindow &other) = delete;
     ActionWindow(ActionWindow &&other) = delete;
+    ActionWindow& operator=(const ActionWindow&) = delete;
+    ActionWindow& operator=(ActionWindow&&) = delete;
+    
 
     ~ActionWindow();
 

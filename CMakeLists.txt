@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.10.0)
 project(proj VERSION 0.1.0 LANGUAGES C CXX)
 
 # Find Raylib
@@ -15,11 +15,8 @@ find_package(raylib REQUIRED)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    add_compile_options(-Wall -Wextra -Wpedantic)
-endif()
+add_compile_options(-Wall -Wextra -Wpedantic)
 
-add_compile_options(-Wall)
 
 add_executable(proj src/main.cpp src/TextEdit.cpp src/Action.cpp src/Dialog.cpp src/Config.cpp src/WindowState.cpp)
 # Link Raylib 

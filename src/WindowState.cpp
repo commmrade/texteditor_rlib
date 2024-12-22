@@ -2,6 +2,34 @@
 
 
 
+
+WindowContext::WindowContext(const Config::Cfg& cfg) {
+    state.lines = {};
+    textEditorWindow = std::make_shared<TextWindow>(cfg.fontPath, cfg.fontSize, cfg.spacing, cfg.scroll_step, state);
+    actionWindow = std::make_shared<ActionWindow>(state);
+
+    currentState = std::make_unique<TextEditorState>();
+}
+
+
+void WindowContext::set_state(std::unique_ptr<WindowState> newState) {
+    currentState = std::move(newState);
+}
+
+void WindowContext::update() {
+    currentState->update(*this);
+}
+
+void WindowContext::draw() {
+    currentState->draw(*this);
+}
+
+void WindowContext::switch_page() {
+    currentState->switch_page(*this);
+}
+
+
+
 void TextEditorState::update(WindowContext& context) {
     context.get_text_editor_window()->Update();
 }

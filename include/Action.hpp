@@ -1,11 +1,8 @@
 #pragma once
 
-#include<iostream>
 #include <memory>
 #include<raylib.h>
 #include "window.hpp"
-#include<deque>
-#include "Dialog.hpp"
 #include "TextState.hpp"
 #include "Interface.hpp"
 

@@ -1,4 +1,5 @@
 #include "Config.hpp"
+#include <filesystem>
 #include <string>
 
 
@@ -37,7 +38,9 @@ Config::Cfg Config::parse(const std::string &path)
                 } else if (line.contains("path")) {
                     if (line.find("=") != std::string::npos) {
                         std::string path = line.substr(line.find("=") + 1);
-                        config.fontPath = path;
+                        if (std::filesystem::exists(path)) {
+                            config.fontPath = path;
+                        } 
                     }
                 } else if (line.contains("scroll_step")){
                     if (line.find("=") != std::string::npos) {

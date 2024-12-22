@@ -10,7 +10,7 @@ public:
     {
         int fontSize{20};
         int spacing{3};
-        std::string fontPath;
+        std::string fontPath{};
         int scroll_step{3};
     };
     

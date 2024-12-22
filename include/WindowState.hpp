@@ -43,30 +43,22 @@ private:
     TextState state;
 
 public:
-    WindowContext(const Config::Cfg& cfg) {
-        state.lines = {};
-        textEditorWindow = std::make_shared<TextWindow>(cfg.fontPath, cfg.fontSize, cfg.spacing, cfg.scroll_step, state);
-        actionWindow = std::make_shared<ActionWindow>(state);
+    WindowContext(const Config::Cfg& cfg);
+    WindowContext() = delete;
+    WindowContext(const WindowContext&) = delete;
+    WindowContext(WindowContext&&) = delete;
+    WindowContext& operator=(const WindowContext&) = delete;
+    WindowContext& operator=(WindowContext &&) = delete;
 
-        currentState = std::make_unique<TextEditorState>();
-    }
 
     TextWindow* get_text_editor_window() { return textEditorWindow.get(); }
     ActionWindow* get_action_window() { return actionWindow.get(); }
 
-    void set_state(std::unique_ptr<WindowState> newState) {
-        currentState = std::move(newState);
-    }
+    void set_state(std::unique_ptr<WindowState> newState);
 
-    void update() {
-        currentState->update(*this);
-    }
+    void update();
 
-    void draw() {
-        currentState->draw(*this);
-    }
+    void draw();
 
-    void switch_page() {
-        currentState->switch_page(*this);
-    }
+    void switch_page();
 };

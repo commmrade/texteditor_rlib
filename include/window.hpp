@@ -1,7 +1,4 @@
 #pragma once
-#include<iostream>
-
-
 
 class Window {
 public:
@@ -9,8 +6,10 @@ public:
     virtual void Draw() = 0; 
 
     Window() = default;
-    Window(const Window &other) = delete;
-    Window& operator=(const Window &other) = delete; 
+    Window(const Window &) = delete;
+    Window(Window &&) = delete;
+    Window& operator=(const Window &) = delete; 
+    Window& operator=(Window &&) = delete;
 
     virtual ~Window() {}
 };

@@ -1,19 +1,23 @@
 #include "TextEdit.hpp"
 #include "TextState.hpp"
-#include <algorithm>
 #include <ostream>
 #include <ranges>
 #include <raylib.h>
 #include <string>
-#include "print"
+
 const constexpr int startXPos = 45;
 
 TextWindow::TextWindow(std::string font_path, int fontSize, int spacing, TextState &state)
  :  fontSize(fontSize), spacing(spacing), active_line(0), 
 cursorX(0), cursor_index(0), scroll_offset(0), scroll_step(3), state(state)
 {
-    font = LoadFont("../Roboto-Regular.ttf");
-    //font = LoadFont(font_path.c_str()); //Setting up a font
+
+    if (font_path.empty()) {
+        font = GetFontDefault();
+    } else {
+        font = LoadFont(font_path.c_str());
+    }
+
     state.lines.push_back("");
 }
 TextWindow::TextWindow(std::string font_path, int fontSize, int spacing, size_t scroll_step, TextState &state) : TextWindow(font_path, fontSize, spacing, state) {
@@ -21,8 +25,7 @@ TextWindow::TextWindow(std::string font_path, int fontSize, int spacing, size_t 
 }
 TextWindow::~TextWindow()
 {
-    //Delete font
-    //UnloadFont(font);
+    UnloadFont(font);
 }    
 
 void TextWindow::handle_input()
@@ -49,8 +52,8 @@ void TextWindow::handle_erasing() {
         state.lines.erase(state.lines.begin() + active_line); //Erasing current line
 
         active_line--; //Changing focus to the previous line (higher)
-        //Automatically scrolling up so user doesnt type over the screen
-        //std::println("{} {}", (int)active_line - (int)scroll_offset, GetScreenHeight() / textSize.y - 1 - scroll_offset);
+     
+
         if ((int)active_line - (int)scroll_offset < 0) {
             
             scroll_offset -= scroll_step; //Scroll page a bit so u dont type under the screen
@@ -63,7 +66,6 @@ void TextWindow::handle_erasing() {
 void TextWindow::handle_inserting() {
      if(IsKeyPressed(KEY_ENTER))
     {
-        //printf("this\n");
         state.lines.insert(state.lines.begin() + active_line + 1, ""); //Inserting a new line for a new line 
         state.lines[active_line + 1] = state.lines[active_line].substr(cursor_index); //Moving the part of the string after current pos on a new line
 
@@ -123,7 +125,6 @@ void TextWindow::handle_arrows_mov() {
     {
         active_line--; //Changing focus to a line higher
         cursor_index = state.lines[active_line].size(); //Moving cursor to the end of the line
-        //cursorY -= textSize.y; //Moving cursor higher
     }
     
     
@@ -134,12 +135,10 @@ void TextWindow::handle_arrows_mov() {
     {
         active_line++; //Changing focus to a line higher
         cursor_index = 0; //Moving cursor to the beginning of the line
-        //cursorY += textSize.y;  //Moving cursor lower
     }
     
     if(IsKeyPressed(KEY_UP) && active_line >= 1) //textsize y is the first line 
     {
-        //cursorY -= textSize.y; //Moving cursor UP
         active_line--; //Changing focused string line
 
         if(cursor_index >= static_cast<int>(state.lines[active_line].size())) //So it won't go out of range

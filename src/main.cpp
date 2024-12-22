@@ -1,12 +1,5 @@
-#include <iostream>
-#include <memory>
 #include "raylib.h"
-#include <deque>
 #include <string>
-#include <vector>
-#include "TextEdit.hpp"
-#include "Action.hpp"
-#include "TextState.hpp"
 #include "Config.hpp"
 #include "WindowState.hpp"
 
@@ -23,6 +16,9 @@ int main() {
     SetExitKey(0);
 
     WindowContext context(cfg);
+
+
+
 
     SetTargetFPS(GetMonitorRefreshRate(0));
     while (!WindowShouldClose()) {
